@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+ <typeAliases>
+    <!-- 当所有的model类都在统一一个package下，且别名与类名相同，可以配置一个package减少配置，代码可读性更好  -->
+ 	<package name="com.neuedu.model"/>
+ </typeAliases>
+ 
+  <mappers>
+  	<mapper resource="com/neuedu/mapper/BalanceMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/BuyMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/BfjlMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/BxjlMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/TpjlMapper.xml"/>
+  	
+  	<mapper resource="com/neuedu/mapper/DepartmentMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/ProductMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/ProviderMapper.xml"/>
+  	<mapper resource="com/neuedu/mapper/UserAccountMapper.xml"/>
+  	
+  	<mapper resource="com/neuedu/mapper/CategoryMapper.xml"/> 	
+  </mappers>
+
+</configuration>

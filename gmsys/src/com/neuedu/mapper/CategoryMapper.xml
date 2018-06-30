@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Category">
+    <id column="CID" jdbcType="INTEGER" property="cid" />
+    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from category
+    where CID = #{cid,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Category">
+    update category
+    set CNAME = #{cname,jdbcType=VARCHAR}
+    where CID = #{cid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select CID, CNAME
+    from category
+  </select>
+
+  <insert id="AddCategory" parameterType="com.neuedu.model.Category">
+    insert into category (CID, CNAME)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="findCategory" parameterType="int" resultType="Category">
+      select CNAME ,CID from category where CID=#{cid,jdbcType=INTEGER}
+  </select>
+  
+ <select id="selectByMuhu" parameterType="String" resultType="java.util.List">  
+  select CNAME ,CID from category  where CNAME like #{cname,jdbcType=VARCHAR};  
+</select>  
+</mapper>

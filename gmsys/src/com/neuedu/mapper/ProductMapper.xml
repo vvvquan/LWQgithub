@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Product">
+    <id column="PRODID" jdbcType="INTEGER" property="prodid" />
+    <result column="PRODNAME" jdbcType="VARCHAR" property="prodname" />
+    <result column="PRODCOUNT" jdbcType="DOUBLE" property="prodcount" />
+    <result column="PROVID" jdbcType="INTEGER" property="provid" />
+    <result column="BUYCOUNT" jdbcType="INTEGER" property="buycount" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where PRODID = #{prodid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Product">
+    insert into product (PRODID, PRODNAME, PRODCOUNT, 
+      PROVID, BUYCOUNT)
+    values (#{prodid,jdbcType=INTEGER}, #{prodname,jdbcType=VARCHAR}, #{prodcount,jdbcType=DOUBLE}, 
+      #{provid,jdbcType=INTEGER}, #{buycount,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Product">
+    update product
+    set PRODNAME = #{prodname,jdbcType=VARCHAR},
+      PRODCOUNT = #{prodcount,jdbcType=DOUBLE},
+      PROVID = #{provid,jdbcType=INTEGER},
+      BUYCOUNT = #{buycount,jdbcType=INTEGER}
+    where PRODID = #{prodid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select PRODID, PRODNAME, PRODCOUNT, PROVID, BUYCOUNT
+    from product
+    where PRODID = #{prodid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select PRODID, PRODNAME, PRODCOUNT, PROVID, BUYCOUNT
+    from product
+  </select>
+</mapper>

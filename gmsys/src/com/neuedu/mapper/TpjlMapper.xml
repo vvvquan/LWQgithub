@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.TpjlMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Tpjl">
+    <id column="TID" jdbcType="INTEGER" property="tid" />
+    <result column="TCOUNT" jdbcType="DOUBLE" property="tcount" />
+    <result column="TRTIME" jdbcType="TIMESTAMP" property="trtime" />
+    <result column="BID" jdbcType="INTEGER" property="bid" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+    <result column="AREAID" jdbcType="INTEGER" property="areaid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from translate
+    where TID = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Tpjl">
+    insert into translate (TID, TCOUNT, TRTIME, 
+      BID, DEPARTID, AREAID
+      )
+    values (#{tid,jdbcType=INTEGER}, #{tcount,jdbcType=DOUBLE}, #{trtime,jdbcType=TIMESTAMP}, 
+      #{bid,jdbcType=INTEGER}, #{departid,jdbcType=INTEGER}, #{areaid,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Tpjl">
+    update translate
+    set TCOUNT = #{tcount,jdbcType=DOUBLE},
+      TRTIME = #{trtime,jdbcType=TIMESTAMP},
+      BID = #{bid,jdbcType=INTEGER},
+      DEPARTID = #{departid,jdbcType=INTEGER},
+      AREAID = #{areaid,jdbcType=INTEGER}
+    where TID = #{tid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID, AREAID
+    from translate
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID, AREAID
+    from translate
+  </select>
+</mapper>

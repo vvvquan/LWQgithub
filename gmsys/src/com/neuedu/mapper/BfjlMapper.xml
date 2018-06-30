@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.BfjlMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Bfjl">
+    <id column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="SCOUNT" jdbcType="DOUBLE" property="scount" />
+    <result column="STIME" jdbcType="TIMESTAMP" property="stime" />
+    <result column="BID" jdbcType="INTEGER" property="bid" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from scrap
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Bfjl">
+    insert into scrap (SID, SCOUNT, STIME, 
+      BID, DEPARTID)
+    values (#{sid,jdbcType=INTEGER}, #{scount,jdbcType=DOUBLE}, #{stime,jdbcType=TIMESTAMP}, 
+      #{bid,jdbcType=INTEGER}, #{departid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Bfjl">
+    update scrap
+    set SCOUNT = #{scount,jdbcType=DOUBLE},
+      STIME = #{stime,jdbcType=TIMESTAMP},
+      BID = #{bid,jdbcType=INTEGER},
+      DEPARTID = #{departid,jdbcType=INTEGER}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select SID, SCOUNT, STIME, BID, DEPARTID
+    from scrap
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select SID, SCOUNT, STIME, BID, DEPARTID
+    from scrap
+  </select>
+</mapper>

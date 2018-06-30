@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.UserAccountMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.UserAccount">
+    <id column="USERID" jdbcType="INTEGER" property="userid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="ACCOUNTS" jdbcType="VARCHAR" property="accounts" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="AGE" jdbcType="TIMESTAMP" property="age" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="RAGEDATE" jdbcType="TIMESTAMP" property="ragedate" />
+    <result column="RID" jdbcType="INTEGER" property="rid" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from useraccount
+    where USERID = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.UserAccount">
+    insert into useraccount (USERID, USERNAME, ACCOUNTS, 
+      PASSWORD, SEX, AGE, 
+      PHONE, RAGEDATE, RID, 
+      DEPARTID)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{accounts,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{age,jdbcType=TIMESTAMP}, 
+      #{phone,jdbcType=VARCHAR}, #{ragedate,jdbcType=TIMESTAMP}, #{rid,jdbcType=INTEGER}, 
+      #{departid,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.UserAccount">
+    update useraccount
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      ACCOUNTS = #{accounts,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=TIMESTAMP},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      RAGEDATE = #{ragedate,jdbcType=TIMESTAMP},
+      RID = #{rid,jdbcType=INTEGER},
+      DEPARTID = #{departid,jdbcType=INTEGER}
+    where USERID = #{userid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select USERID, USERNAME, ACCOUNTS, PASSWORD, SEX, AGE, PHONE, RAGEDATE, RID, DEPARTID
+    from useraccount
+    where USERID = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select USERID, USERNAME, ACCOUNTS, PASSWORD, SEX, AGE, PHONE, RAGEDATE, RID, DEPARTID
+    from useraccount
+  </select>
+  <select id="findUserByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select USERID, USERNAME, ACCOUNTS, PASSWORD, SEX, AGE, PHONE, RAGEDATE, RID, DEPARTID
+    from useraccount
+    where ACCOUNTS = #{accounts,jdbcType=VARCHAR}
+  </select>
+</mapper>

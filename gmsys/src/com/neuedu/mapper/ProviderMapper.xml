@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.ProviderMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Provider">
+    <id column="PROVID" jdbcType="INTEGER" property="provid" />
+    <result column="PROVNAME" jdbcType="VARCHAR" property="provname" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from provider
+    where PROVID = #{provid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Provider">
+    insert into provider (PROVID, PROVNAME, ADDRESS, 
+      PHONE)
+    values (#{provid,jdbcType=INTEGER}, #{provname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Provider">
+    update provider
+    set PROVNAME = #{provname,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR}
+    where PROVID = #{provid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select PROVID, PROVNAME, ADDRESS, PHONE
+    from provider
+    where PROVID = #{provid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select PROVID, PROVNAME, ADDRESS, PHONE
+    from provider
+  </select>
+</mapper>

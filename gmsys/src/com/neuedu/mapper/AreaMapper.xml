@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Area">
+    <id column="AREAID" jdbcType="INTEGER" property="areaid" />
+    <result column="AREANAME" jdbcType="VARCHAR" property="areaname" />
+    <result column="RELATIVE" jdbcType="INTEGER" property="relative" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from area
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Area">
+    insert into area (AREAID, AREANAME, RELATIVE
+      )
+    values (#{areaid,jdbcType=INTEGER}, #{areaname,jdbcType=VARCHAR}, #{relative,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Area">
+    update area
+    set AREANAME = #{areaname,jdbcType=VARCHAR},
+      RELATIVE = #{relative,jdbcType=INTEGER}
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select AREAID, AREANAME, RELATIVE
+    from area
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select AREAID, AREANAME, RELATIVE
+    from area
+  </select>
+</mapper>

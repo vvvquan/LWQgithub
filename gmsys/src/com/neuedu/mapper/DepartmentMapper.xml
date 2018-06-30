@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Department">
+    <id column="DEPARTID" jdbcType="INTEGER" property="departid" />
+    <result column="DEPARTNAME" jdbcType="VARCHAR" property="departname" />
+    <result column="AREAID" jdbcType="INTEGER" property="areaid" />
+    <result column="AREANAME" jdbcType="VARCHAR" property="areaname" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from department
+    where DEPARTID = #{departid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Department">
+    insert into department (DEPARTID, DEPARTNAME, AREAID, 
+      AREANAME)
+    values (#{departid,jdbcType=INTEGER}, #{departname,jdbcType=VARCHAR}, #{areaid,jdbcType=INTEGER}, 
+      #{areaname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Department">
+    update department
+    set DEPARTNAME = #{departname,jdbcType=VARCHAR},
+      AREAID = #{areaid,jdbcType=INTEGER},
+      AREANAME = #{areaname,jdbcType=VARCHAR}
+    where DEPARTID = #{departid,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select DEPARTID, DEPARTNAME, AREAID, AREANAME
+    from department
+    where DEPARTID = #{departid,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select DEPARTID, DEPARTNAME, AREAID, AREANAME
+    from department
+  </select>
+</mapper>
