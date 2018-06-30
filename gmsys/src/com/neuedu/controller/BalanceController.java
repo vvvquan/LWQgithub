@@ -3,22 +3,24 @@ package com.neuedu.controller;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.neuedu.model.Balance;
 import com.neuedu.service.BalanceService;
 import com.neuedu.service.CategoryService;
 
-//配置MVC的控制器类
 @Controller
 public class BalanceController {
-	//在mvc的控制层整合service服务层
 			@Autowired 
 			private BalanceService balance;
-			//在浏览中通过URL调用这个方法进行登录
+
 			@RequestMapping("/zc/add.do")
 			public String add(String zcname,int zcnumber,String price,String year,int cid,int departid ) {
 				
@@ -34,5 +36,30 @@ public class BalanceController {
 				System.out.println(bal.getBname());
 				balance.insert(bal);
 				return "/addzc";
+			}
+			
+			@RequestMapping("/balance/findAll")
+			public String findAll(Model model){
+				List<Balance> list = balance.selectAll();
+				if(list == null) {
+					return "index";
+				}else {
+					model.addAttribute("listBalance", list);
+					return "totalzc";
+				}
+			}
+			
+			@RequestMapping("/Balance/findById")
+			public String findById(String text ,HttpSession session, Model model){
+				int id = Integer.parseInt(text);
+				@SuppressWarnings("unchecked")
+				List<Balance> list = (List<Balance>) balance.selectByPrimaryKey(id);
+				
+				if(list == null) {
+					return "index";
+				}else {
+					model.addAttribute("listBalance", list);
+					return "totalzc";
+				}
 			}
 }

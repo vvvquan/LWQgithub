@@ -1,6 +1,7 @@
 package com.neuedu.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.neuedu.model.Area;
 import com.neuedu.model.Balance;
+import com.neuedu.model.Bfjl;
 import com.neuedu.model.Tpjl;
 import com.neuedu.model.Department;
 import com.neuedu.service.AreaService;
@@ -21,7 +24,6 @@ import com.neuedu.service.TpjlService;
 import com.neuedu.service.DepartmentService;
 
 @Controller
-@RequestMapping("/Tpjl")
 public class TpjlController {
 	@Autowired
 	private TpjlService tpjlService;
@@ -32,7 +34,7 @@ public class TpjlController {
 	@Autowired
 	private AreaService areaService;
 	
-	@RequestMapping("/findById")
+	@RequestMapping("/Tpjl/findById")
 	public String updateProductList(@RequestParam Integer tid, HttpServletRequest request) {
 		Tpjl tpjl = tpjlService.selectByPrimaryKey(tid);
 		List<Balance> balance = balanceService.selectAll();
@@ -45,14 +47,16 @@ public class TpjlController {
 		return "updatetiaopei";
 	}
 	
-	@RequestMapping("/findById2")
+	@RequestMapping("/Tpjl/findById2")
 	public String findProduct(@RequestParam Integer tid, HttpServletRequest request) {		
 		Tpjl tpjl = tpjlService.selectByPrimaryKey(tid);
-		request.setAttribute("Tpjl", tpjl);			
+		List<Tpjl> listTpjl = new ArrayList();
+		listTpjl.add(tpjl);
+		request.setAttribute("listBfjl", listTpjl);				
 		return "tiaopeijilu";
 	}
 	
-	@RequestMapping("/addtiaopei")
+	@RequestMapping("/Tpjl/addtiaopei")
 	public String addbaoxiu(HttpServletRequest request) {
 		List<Balance> listBalance = balanceService.selectAll();
 		List<Department> listDepartment = departmentService.selectAll();
@@ -63,7 +67,7 @@ public class TpjlController {
 		return "addtiaopei";
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/Tpjl/add")
 	public String addbaoxiu2(Integer TID, Double TCOUNT, String TRTIME, Integer BID, Integer DEPARTID, Integer AREAID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -78,7 +82,7 @@ public class TpjlController {
 		return "tiaopeixinxi";
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/Tpjl/delete")
 	public String deleteProduct(@RequestParam String number, HttpServletRequest request) {
 		if(!number.equals("")){
 			String[] ids = number.split("-");
@@ -92,7 +96,7 @@ public class TpjlController {
 		return "tiaopeixinxi";
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/Tpjl/update")
 	public String updateProduct(Integer TID, Double TCOUNT, String TRTIME, Integer BID, Integer DEPARTID, Integer AREAID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -106,5 +110,16 @@ public class TpjlController {
 		List<Tpjl> listTpjl = tpjlService.selectAll();
 		request.setAttribute("listTpjl", listTpjl);			
 		return "tiaopeixinxi";
+	}
+	
+	@RequestMapping("/tpjl/findAll")
+	public String findAll(Model model){
+		List<Tpjl> list = tpjlService.selectAll();
+		if(list == null){
+			return "index";
+		}else{
+			model.addAttribute("listTpjl", list);
+			return "tiaopeijilu";
+		}
 	}
 }

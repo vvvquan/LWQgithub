@@ -1,6 +1,7 @@
 package com.neuedu.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,10 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.neuedu.model.Balance;
+import com.neuedu.model.Bfjl;
 import com.neuedu.model.Buy;
 import com.neuedu.model.Bxjl;
 import com.neuedu.model.Department;
@@ -25,7 +28,6 @@ import com.neuedu.service.ProductService;
 import com.neuedu.service.ProviderService;
 
 @Controller
-@RequestMapping("/Bxjl")
 public class BxjlController {
 	@Autowired
 	private BxjlService bxjlService;
@@ -34,7 +36,7 @@ public class BxjlController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-	@RequestMapping("/findById")
+	@RequestMapping("/Bxjl/findById")
 	public String updateProductList(@RequestParam Integer repairid, HttpServletRequest request) {
 		Bxjl bxjl = bxjlService.selectByPrimaryKey(repairid);
 		List<Balance> balance = balanceService.selectAll();
@@ -45,14 +47,16 @@ public class BxjlController {
 		return "updatebaoxiu";
 	}
 	
-	@RequestMapping("/findById2")
+	@RequestMapping("/Bxjl/findById2")
 	public String findProduct(@RequestParam Integer repairid, HttpServletRequest request) {		
 		Bxjl bxjl = bxjlService.selectByPrimaryKey(repairid);
-		request.setAttribute("Bxjl", bxjl);			
+		List<Bxjl> listBxjl = new ArrayList();
+		listBxjl.add(bxjl);
+		request.setAttribute("listBxjl", listBxjl);				
 		return "baoxiujilu";
 	}
 	
-	@RequestMapping("/addbaoxiu")
+	@RequestMapping("/Bxjl/addbaoxiu")
 	public String addbaoxiu(HttpServletRequest request) {		
 		List<Balance> listBalance = balanceService.selectAll();
 		List<Department> listDepartment = departmentService.selectAll();
@@ -61,7 +65,7 @@ public class BxjlController {
 		return "addbaoxiu";
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/Bxjl/add")
 	public String addbaoxiu2(Integer REPAIRID, Double RCOUNT, String RTIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -76,7 +80,7 @@ public class BxjlController {
 		return "baoxiuxinxi";
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/Bxjl/delete")
 	public String deleteProduct(@RequestParam String number, HttpServletRequest request) {
 		if(!number.equals("")){
 			String[] ids = number.split("-");
@@ -90,7 +94,7 @@ public class BxjlController {
 		return "baoxiuxinxi";
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/Bxjl/update")
 	public String updateProduct(Integer REPAIRID, Double RCOUNT, String RTIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -104,5 +108,16 @@ public class BxjlController {
 		List<Bxjl> listBxjl = bxjlService.selectAll();
 		request.setAttribute("listBxjl", listBxjl);			
 		return "baoxiuxinxi";
+	}
+	
+	@RequestMapping("/bxjl/findAll")
+	public String findAll(Model model){
+		List<Bxjl> list = bxjlService.selectAll();
+		if(list == null){
+			return "index";
+		}else{
+			model.addAttribute("listBxjl", list);
+			return "baoxiujilu";
+		}
 	}
 }

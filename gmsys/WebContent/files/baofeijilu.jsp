@@ -157,16 +157,23 @@ $(function(){
 				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">部门编号</td>
 				           </tr>
 				           
-				              <%				              		
-				              		Bfjl b = (Bfjl)request.getAttribute("Bfjl");
+				              <%
+				              	List<Bfjl> list=(List<Bfjl>)request.getAttribute("listBfjl");
+				              	Iterator<Bfjl> it=list.iterator();
+				              	while(it.hasNext()){
+				              		
+				              		Bfjl b=it.next();
 				              	%>
 				           <tr>
+				                   
 				                    <td bgcolor="#FFFFFF"><%=b.getSid() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getScount() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getStime() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getBid() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>				                  
-				           </tr>
+				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>
+				                  
+				           </tr> 
+				           <%} %>
 				 				 
 				            </table></td>
 				        </tr>

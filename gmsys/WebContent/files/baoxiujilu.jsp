@@ -154,16 +154,22 @@ $(function(){
 				             <td width="12%" height="20" align="center" bgcolor="#EEEEEE">资产编号</td>
 				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">部门编号</td>
 				           </tr>				          				           
-				                 <%				              		
-				              		Bxjl b = (Bxjl)request.getAttribute("Bxjl");
+				                 <%
+				              		List<Bxjl> list=(List<Bxjl>)request.getAttribute("listBxjl");
+				              	Iterator<Bxjl> it=list.iterator();
+				              	while(it.hasNext()){
+				              		
+				              		Bxjl b=it.next();
 				              	%>
 				           <tr>
 				                    <td bgcolor="#FFFFFF"><%=b.getRepairid() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getRcount() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getRtime() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getBid() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>				                   
+				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>
+				                   
 				           </tr> 
+				        		<%} %>
 				        
 				            </table></td>
 				        </tr>

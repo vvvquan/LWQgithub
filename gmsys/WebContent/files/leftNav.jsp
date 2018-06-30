@@ -90,15 +90,15 @@
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/Tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/Bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/Bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -114,12 +114,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="table-font-list.html">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="table-images-list.html">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

@@ -439,7 +439,7 @@ $(function(){
 				           <tr>
 				              <td bgcolor="#FFFFFF"><%=b.getBid() %></td>
 							  <td height="20" bgcolor="#FFFFFF"><%=b.getBname() %></td>
-							  <td height="20" bgcolor="#FFFFFF"><%=b.getCname() %></td>
+							  <td height="20" bgcolor="#FFFFFF"><%=b.getBname() %></td>
 				              <td height="20" bgcolor="#FFFFFF"><%=b.getBcount() %></td>
 				              <td height="20" bgcolor="#FFFFFF"><%=b.getPrice() %></td>
 				           </tr>
@@ -531,7 +531,7 @@ $(function(){
 				                  <tr>
 				                   
 				                     <td bgcolor="#FFFFFF"><%=c.getDepartid() %></td>
-				                     <td height="20" bgcolor="#FFFFFF"><%=c.getCname() %></td>
+				                     <td height="20" bgcolor="#FFFFFF"><%=c.getBname() %></td>
 				                     <td height="20" bgcolor="#FFFFFF"><%=c.getBcount() %></td>
 				                     <td height="20" bgcolor="#FFFFFF"><%=c.getPrice() %></td>
 				                  </tr>

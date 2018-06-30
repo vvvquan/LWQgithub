@@ -222,12 +222,12 @@ function link(){
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="table-font-list.html">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="table-images-list.html">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

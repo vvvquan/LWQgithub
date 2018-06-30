@@ -1,6 +1,7 @@
 package com.neuedu.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,7 +21,6 @@ import com.neuedu.service.BfjlService;
 import com.neuedu.service.DepartmentService;
 
 @Controller
-@RequestMapping("/Bfjl")
 public class BfjlController {
 	@Autowired
 	private BfjlService bfjlService;
@@ -28,7 +29,7 @@ public class BfjlController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-	@RequestMapping("/findById")
+	@RequestMapping("/Bfjl/findById")
 	public String updateProductList(@RequestParam Integer sid, HttpServletRequest request) {
 		Bfjl bfjl = bfjlService.selectByPrimaryKey(sid);
 		List<Balance> balance = balanceService.selectAll();
@@ -39,14 +40,16 @@ public class BfjlController {
 		return "updatebaofei";
 	}
 	
-	@RequestMapping("/findById2")
+	@RequestMapping("/Bfjl/findById2")
 	public String findProduct(@RequestParam Integer sid, HttpServletRequest request) {		
 		Bfjl bfjl = bfjlService.selectByPrimaryKey(sid);
-		request.setAttribute("Bfjl", bfjl);			
+		List<Bfjl> listBfjl = new ArrayList();
+		listBfjl.add(bfjl);
+		request.setAttribute("listBfjl", listBfjl);			
 		return "baofeijilu";
 	}
 	
-	@RequestMapping("/addbaofei")
+	@RequestMapping("/Bfjl/addbaofei")
 	public String addbaoxiu(HttpServletRequest request) {		
 		List<Balance> listBalance = balanceService.selectAll();
 		List<Department> listDepartment = departmentService.selectAll();
@@ -55,7 +58,7 @@ public class BfjlController {
 		return "addbaofei";
 	}
 
-	@RequestMapping("/add")
+	@RequestMapping("/Bfjl/add")
 	public String addbaoxiu2(Integer SID, Double SCOUNT, String STIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -70,7 +73,7 @@ public class BfjlController {
 		return "baofeixinxi";
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/Bfjl/delete")
 	public String deleteProduct(@RequestParam String number, HttpServletRequest request) {
 		if(!number.equals("")){
 			String[] ids = number.split("-");
@@ -84,7 +87,7 @@ public class BfjlController {
 		return "baofeixinxi";
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/Bfjl/update")
 	public String updateProduct(Integer SID, Double SCOUNT, String STIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
 		Date date = null;
 		try{
@@ -98,5 +101,16 @@ public class BfjlController {
 		List<Bfjl> listBfjl = bfjlService.selectAll();
 		request.setAttribute("listBfjl", listBfjl);			
 		return "baofeixinxi";
+	}
+	
+	@RequestMapping("/bfjl/findAll")
+	public String findAll(HttpServletRequest request){
+		List<Bfjl> list = bfjlService.selectAll();
+		if(list == null){
+			return "index";
+		}else{
+			request.setAttribute("listBfjl", list);
+			return "baofeijilu";
+		}
 	}
 }

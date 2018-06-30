@@ -336,7 +336,7 @@ document.getElementById("aa").style.display="";
 						<tr><td align="left">
 						<input type="button" name="Submit" value="保存" class="button" onclick="alert('保存成功！');"/>　
 							
-							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
+						<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
 						</td></tr>
 								<TR>
 							<TD width="100%">

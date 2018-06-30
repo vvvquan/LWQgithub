@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.neuedu.model.Buy;
 import com.neuedu.model.Cgjl;
+import com.neuedu.service.BuyService;
 import com.neuedu.service.CgjlService;
 
 @Controller
@@ -17,14 +19,16 @@ public class CgjlController {
 
 	@Autowired
 	private CgjlService cgjlService;
+	@Autowired
+	private BuyService buyService;
 	
 	@RequestMapping("/cgjl/findAll")
 	public String findAll(Model model){
-		List<Cgjl> list = cgjlService.selectAll();
+		List<Buy> list = buyService.selectAll();
 		if(list == null){
 			return "index";
 		}else{
-			model.addAttribute("listCgjl", list);
+			model.addAttribute("listBuy", list);
 			return "caigoujilu";
 		}
 	}
@@ -32,7 +36,7 @@ public class CgjlController {
 	@RequestMapping("/cgjl/findById")
 	public String findById(String text, HttpSession session, Model model){
 		int id = Integer.parseInt(text);
-		Cgjl cg = cgjlService.selectByPrimaryKey(id);
+		Buy cg = buyService.selectByPrimaryKey(id);
 		
 		if(cg == null){
 			return "index";
