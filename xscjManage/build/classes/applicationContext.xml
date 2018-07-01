@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+ 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />   
+		<property name="url" value="jdbc:mysql://localhost:3306/xscj?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"> 
+		<property name="sessionFactory" ref="sessionFactory"/> 
+	</bean> 
+	
+	<!-- 定义一个bean, class指定该bean实例的实现类 -->
+	<bean id="baseDao" class="org.dao.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="dl" class="org.action.DlAction">
+		<property name="dlService" ref="dlService"/>
+	</bean>	
+	<bean id="xs" class="org.action.XsAction">
+		<property name="xsService" ref="xsService"/>
+		<property name="zyService" ref="zyService"/>
+	</bean>
+	<bean id="cj" class="org.action.CjAction">
+		<property name="xsService" ref="xsService"/>
+		<property name="kcService" ref="kcService"/>
+		<property name="cjService" ref="cjService"/>
+	</bean>
+	<bean id="kc" class="org.action.KcAction">
+		<property name="kcService" ref="kcService"/>
+	</bean>
+	
+	<bean id="cjDao" class="org.dao.imp.CjDAOImp" parent="baseDao"/>
+	<bean id="dlDao" class="org.dao.imp.DlDAOImp" parent="baseDao"/>
+	<bean id="kcDao" class="org.dao.imp.KcDAOImp" parent="baseDao"/>
+	<bean id="xsDao" class="org.dao.imp.XsDAOImp" parent="baseDao"/>
+	<bean id="zyDao" class="org.dao.imp.ZyDAOImp" parent="baseDao"/>
+	
+	<bean id="cjService" class="org.service.imp.CjServiceManage">
+		<property name="cjDao" ref="cjDao"></property>
+	</bean>
+	<bean id="dlService" class="org.service.imp.DlServiceManage">
+		<property name="dlDao" ref="dlDao"></property>
+	</bean>
+	<bean id="kcService" class="org.service.imp.KcServiceManage">
+		<property name="kcDao" ref="kcDao"></property>
+	</bean>
+	<bean id="xsService" class="org.service.imp.XsServiceManage">
+		<property name="xsDao" ref="xsDao"></property>
+	</bean>
+	<bean id="zyService" class="org.service.imp.ZyServiceManage">
+		<property name="zyDao" ref="zyDao"></property>
+	</bean>
+</beans>

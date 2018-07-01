@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-1 12:06:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.model.Kcb" table="kcb">
+        <id name="kch" type="java.lang.String">
+            <column name="KCH" />
+            <generator class="assigned" />
+        </id>
+        <property name="kcm" type="java.lang.String">
+            <column name="KCM" />
+        </property>
+        <property name="kxxq" type="java.lang.String">
+            <column name="KXXQ" />
+        </property>
+        <property name="xs" type="java.lang.String">
+            <column name="XS" />
+        </property>
+        <property name="xf" type="int">
+            <column name="XF" />
+        </property>
+    </class>
+</hibernate-mapping>

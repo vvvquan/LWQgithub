@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-1 8:23:58 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.model.Xsb" table="xsb">
+        <id name="xh" type="java.lang.String">
+            <column name="XH" />
+            <generator class="assigned" />
+        </id>
+        <property name="xm" type="java.lang.String">
+            <column name="XM" not-null="true"/>
+        </property>
+        <property name="xb" type="java.lang.Short">
+            <column name="XB" not-null="true"/>
+        </property>
+        <property name="cssj" type="java.lang.String">
+            <column name="CSSJ" />
+        </property>
+        <property name="zxf" type="java.lang.Integer">
+            <column name="ZXF" />
+        </property>
+        <property name="bz" type="java.lang.String">
+            <column name="BZ" length="500"/>
+        </property>
+		<property name="zp">
+            <column name="ZP" />
+        </property>
+        <many-to-one name="zyb" class="org.model.Zyb" fetch="select" lazy="false">
+            <column name="ZY_ID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

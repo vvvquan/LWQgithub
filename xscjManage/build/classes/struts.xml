@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+  "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+    	<!-- 用户登录 -->       
+        <action name="login" class="dl">        	
+            <result name="success">/main.jsp</result>
+            <result name="error">/error.jsp</result>          
+        	<interceptor-ref name="defaultStack"></interceptor-ref>		
+        </action>
+        <!-- 用户注册 -->       
+        <action name="addDl" class="dl" method="addDl">        	
+            <result name="success">/main.jsp</result>
+            <result name="error">/existDl.jsp</result>          	
+        </action>
+        <!-- 用户退出 -->       
+        <action name="exit" class="dl" method="exit">        	
+            <result name="success">/login.jsp</result>		
+        </action>
+        <!-- 显示所有学生信息 -->       
+        <action name="xsInfo" class="xs">        	
+            <result name="success">/xsInfo.jsp</result>	
+        </action>
+        <!-- 查看某学生详细信息 -->       
+        <action name="findXs" class="xs" method="findXs">        	
+            <result name="success">/moretail.jsp</result>	
+        </action>
+        <!-- 学生照片 -->       
+        <action name="getImage" class="xs" method="getImage"></action>
+        <!-- 删除某学生详细信息 -->       
+        <action name="deleteXs" class="xs" method="deleteXs">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+        <!-- 录入某学生详细信息 -->       
+        <action name="addXsView" class="xs" method="addXsView">        	
+            <result name="success">/addXsInfo.jsp</result>
+            <result name="noauthority">/noAuthority.jsp</result>	
+        </action>       
+        <action name="addXs" class="xs" method="addXs">        	
+            <result name="success">/success.jsp</result>	
+            <result name="error">/existXs.jsp</result>
+        </action>
+        <!-- 修改某学生详细信息 -->       
+        <action name="updateXsView" class="xs" method="updateXsView">        	
+            <result name="success">/updateXsView.jsp</result>	
+        </action>
+        <!-- 确定修改某学生详细信息的按钮 -->      
+        <action name="updateXs" class="xs" method="updateXs">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+        <!-- 为某个学生的某门课程添加成绩 -->      
+        <action name="addXscjView" class="cj">        	
+            <result name="success">/addCj.jsp</result>
+            <result name="noauthority">/noAuthority.jsp</result>	
+        </action>
+        <!-- 显示所有学生成绩 -->
+        <action name="xscjInfo" class="cj" method="xscjInfo">        	
+            <result name="success">/xscjInfo.jsp</result>	
+        </action>
+        <!-- 按钮：添加或修改某学生成绩 -->      
+        <action name="addorupdateXscj" class="cj" method="addorupdateXscj">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+        <!-- 查看某个学生的成绩表 -->       
+        <action name="findXscj" class="cj" method="findXscj">        	
+            <result name="success">/oneXscj.jsp</result>	
+            <result name="error">/noXscj.jsp</result>
+        </action> 
+        <!-- 删除学生成绩 -->       
+        <action name="deleteOneXscj" class="cj" method="deleteOneXscj">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+        <!-- 显示所有学生课程 -->       
+        <action name="addXskcView" class="kc">        	
+            <result name="success">/addKc.jsp</result>
+            <result name="noauthority">/noAuthority.jsp</result>
+        </action>
+        <action name="addKc" class="kc" method="addKc">        	
+            <result name="success">/success.jsp</result>	
+            <result name="error">/existKc.jsp</result>
+        </action>
+        <action name="xskcInfo" class="kc" method="xskcInfo">        	
+            <result name="success">/xskcInfo.jsp</result>	
+        </action>
+        <!-- 按钮：添加或修改某学生课程 -->      
+        <action name="addorupdateXskc" class="kc" method="addorupdateXskc">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+        <!-- 查看某个学生的课程表 -->       
+        <action name="findXskc" class="kc" method="findXskc">        	
+            <result name="success">/oneXskc.jsp</result>	
+            <result name="error">/noXskc.jsp</result>
+        </action> 
+        <!-- 删除学生某个课程 -->       
+        <action name="deleteOneXskc" class="kc" method="deleteOneXskc">        	
+            <result name="success">/success.jsp</result>	
+        </action>
+    </package>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.multipart.saveDir" value="/image"></constant>
+</struts>

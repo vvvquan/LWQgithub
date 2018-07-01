@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-6-1 10:10:50 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.model.Cjb" table="cjb">
+        <composite-id name="id" class="org.model.CjbId">
+            <key-property name="xh" column="XH" type="string"/>
+            <key-property name="kch" column="KCH" type="string"/>
+        </composite-id>
+        <property name="cj" type="int">
+            <column name="CJ" />
+        </property>
+        <property name="xf" type="int">
+            <column name="XF" />
+        </property>
+    </class>
+</hibernate-mapping>
