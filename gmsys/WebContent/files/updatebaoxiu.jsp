@@ -107,7 +107,7 @@ document.getElementById("aa").style.display="";
 		<%--内容 --%>
         <div class="tpl-content-wrapper">
             
-            <form action="${pageContext.request.contextPath}/buy/update.do" method="post"  name="form">
+            <form action="${pageContext.request.contextPath}/Bxjl/update.do" method="post"  name="form">
 				<div class="MainDiv">
 				<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 				  <tr>
