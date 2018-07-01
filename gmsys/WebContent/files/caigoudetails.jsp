@@ -4,7 +4,8 @@
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -132,7 +133,7 @@ function link(){
 				  </tr>
 				  <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">采购时间:</td>
-				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=ag.getBuytime() %></td>
+				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><fmt:formatDate value="<%=ag.getBuytime() %>" pattern="yyyy-MM-dd"/></td>
 				  </tr>
 				   <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">供应商编号:</td>

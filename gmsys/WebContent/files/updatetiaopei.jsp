@@ -4,7 +4,8 @@
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,7 +136,7 @@ document.getElementById("aa").style.display="";
 									  </tr>
 									   <tr>
 									  <td nowrap align="right" width="15%">调配时间:</td>
-									    <td width="35%"><input name='TRTIME' type="date" class="text" style="width:154px" value="<%=ag.getTrtime() %>" />
+									    <td width="35%"><input name='TRTIME' type="date" class="text" style="width:154px" value="<fmt:formatDate value="<%=ag.getTrtime() %>" pattern="yyyy-MM-dd"/>" />
 								      
 									    <td nowrap align="right" width="15%">资产编号:</td>
 									    <td width="35%">

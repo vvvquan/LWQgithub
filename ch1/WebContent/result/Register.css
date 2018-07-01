@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.all{
+	margin:0 auto;
+}
+.mid{
+	background-color:rgba(165, 215, 233, 0.66);
+	text-align:center;
+}
+.banner{
+	background-color:#E8EEF7;
+}
+table tr td{
+	background-color:#E8EEF7;
+}

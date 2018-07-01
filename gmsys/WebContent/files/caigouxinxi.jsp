@@ -1,9 +1,9 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="com.neuedu.model.Buy"%>
 <%@page import="java.util.List" isELIgnored="false"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -166,7 +166,7 @@ $(function(){
 				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.buyid}"/></td>
 				                    <td bgcolor="#FFFFFF">${c.buyid}</td>
 				                    <td bgcolor="#FFFFFF">${c.buycount}</td>
-				                    <td bgcolor="#FFFFFF">${c.buytime}</td>
+				                    <td bgcolor="#FFFFFF"><fmt:formatDate value="${c.buytime}" pattern="yyyy-MM-dd"/></td>
 				                    <td bgcolor="#FFFFFF">${c.provid}</td>
 				                    <td bgcolor="#FFFFFF">${c.prodid}</td>
 				                    <td bgcolor="#FFFFFF">${c.departid}</td>				        

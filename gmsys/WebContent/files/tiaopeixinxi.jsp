@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -174,7 +175,7 @@ $(function(){
 				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
 				                    <td bgcolor="#FFFFFF">${c.tid }</td>
 				                    <td bgcolor="#FFFFFF">${c.tcount }</td>
-				                    <td bgcolor="#FFFFFF">${c.trtime }</td>
+				                    <td bgcolor="#FFFFFF"><fmt:formatDate value="${c.trtime}" pattern="yyyy-MM-dd"/></td>
 				                    <td bgcolor="#FFFFFF">${c.areaid }</td>
 				                    <td bgcolor="#FFFFFF">${c.departid }</td>
 				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/Tpjl/findById.do?tid=${c.tid}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/Tpjl/findById2.do?tid=${c.tid}">查看</a></td>

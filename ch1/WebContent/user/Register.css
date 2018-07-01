@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+.all{
+	margin:0 auto;
+}
+.table_title{
+	background-color:rgba(165, 215, 233, 0.9);
+	text-align:center;
+}
+.banner{
+	background-color:#E8EEF7;
+}

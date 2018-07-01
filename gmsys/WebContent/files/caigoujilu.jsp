@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="b"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -163,7 +164,7 @@ $(function(){
 				           <tr>				                    
 				                    <td bgcolor="#FFFFFF"><%=b.getBuyid() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getBuycount() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getBuytime()  %></td>
+				                    <td bgcolor="#FFFFFF"><fmt:formatDate value="<%=b.getBuytime() %>" pattern="yyyy-MM-dd"/></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getProvid() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getProdid() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>			                   
