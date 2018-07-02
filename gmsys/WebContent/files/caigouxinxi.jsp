@@ -2,7 +2,7 @@
 <%@page import="com.neuedu.model.Buy"%>
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,6 +50,7 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/echarts.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.js"></script>
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
@@ -96,7 +97,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/buy/search.do?id="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/buy/search.do?word="+bq);
         $("#fom").submit();
     });
 });
@@ -186,8 +187,18 @@ $(function(){
 				        <tr>
 				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
 				              <tr>
-				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
-				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
+				                <c:set var="page" value="${page}"></c:set>
+				                <td width="50%">共 <span class="right-text09"><c:out value="${page.totalPage}"/></span> 页 | 第 <span class="right-text09"><c:out value="${page.pageNow}"/></span> 页</td>
+				                <td width="49%" align="right">
+				                	[<a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1" class="right-font08">首页</a> | 
+				                	<c:if test="${page.hasPre}">
+				                	<a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=<c:out value="${page.pageNow-1}"/>" class="right-font08">上一页</a> | 
+				                	</c:if>
+				                	<c:if test="${page.hasNext}">
+				                	<a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=<c:out value="${page.pageNow+1}"/>" class="right-font08">下一页</a> | 
+				                	</c:if>
+				                	<a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=<c:out value="${page.totalPage}"/>" class="right-font08">末页</a>] 转至：
+				                </td>
 				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
 				                    <tr>
 				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
@@ -204,9 +215,9 @@ $(function(){
 				</form>
 
         </div>
+	</div>
 
 
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/iscroll.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>

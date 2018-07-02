@@ -26,6 +26,7 @@ import com.neuedu.service.BxjlService;
 import com.neuedu.service.DepartmentService;
 import com.neuedu.service.ProductService;
 import com.neuedu.service.ProviderService;
+import com.neuedu.tool.Pager;
 
 @Controller
 public class BxjlController {
@@ -77,6 +78,16 @@ public class BxjlController {
 		bxjlService.insert(record);
 		List<Bxjl> listBxjl = bxjlService.selectAll();
 		request.setAttribute("listBxjl", listBxjl);
+		return "baoxiuxinxi";
+	}
+	
+	@RequestMapping("/Bxjl/search")
+	public String searchbaoxiu(@RequestParam String word, HttpServletRequest request) {
+		int num = Integer.parseInt(word);
+		List<Bxjl> listBxjl = bxjlService.search(num);
+		request.setAttribute("listBxjl", listBxjl);
+		Pager page = new Pager(1,1);
+		request.setAttribute("page", page);
 		return "baoxiuxinxi";
 	}
 	

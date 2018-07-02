@@ -30,8 +30,6 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
     
-
-  
   <!--  配置编码过滤 -->
   <filter>
     <filter-name>encodingFilter</filter-name>

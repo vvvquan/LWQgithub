@@ -36,4 +36,14 @@
     select BUYID, BUYCOUNT, BUYTIME, PROVID, PRODID, DEPARTID
     from buy
   </select>
+    <select id="select" resultMap="BaseResultMap">
+    select BUYID, BUYCOUNT, BUYTIME, PROVID, PRODID, DEPARTID
+    from buy
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
+  <select id="search" resultMap="BaseResultMap">
+    select BUYID, BUYCOUNT, BUYTIME, PROVID, PRODID, DEPARTID
+    from buy
+    where BUYID=#{num,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/echarts.min.js"></script>
     
     <style type="text/css">
@@ -107,7 +108,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/buy/search.do?id="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/Bfjl/search.do?word="+bq);
         $("#fom").submit();
     });
 });
@@ -132,10 +133,11 @@ $(function(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>报废编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input id="text" name="text" type="text" nam="gongs" />
 							  </label>
-							   
-							    <input name="Submit" type="button" class="right-button02" value="查询" /></td>
+							    
+							    <input id="chaxun" name="chaxun" type="button" class="right-button02" value="查 询" /></td>
+							  </td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -199,8 +201,18 @@ $(function(){
 				        <tr>
 				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
 				              <tr>
-				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
-				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
+				              	<c:set var="page" value="${page}"></c:set>
+				                <td width="50%">共 <span class="right-text09"><c:out value="${page.totalPage}"/></span> 页 | 第 <span class="right-text09"><c:out value="${page.pageNow}"/></span> 页</td>
+				                <td width="49%" align="right">
+				                	[<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=1" class="right-font08">首页</a> | 
+				                	<c:if test="${page.hasPre}">
+				                	<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=<c:out value="${page.pageNow-1}"/>" class="right-font08">上一页</a> | 
+				                	</c:if>
+				                	<c:if test="${page.hasNext }">
+				                	<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=<c:out value="${page.pageNow+1}"/>" class="right-font08">下一页</a> | 
+				                	</c:if>
+				                	<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=<c:out value="${page.totalPage}"/>" class="right-font08">末页</a>] 转至：
+				                </td>
 				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
 				                    <tr>
 				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
@@ -218,7 +230,6 @@ $(function(){
 
         </div>
 
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/iscroll.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>

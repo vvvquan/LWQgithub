@@ -19,6 +19,7 @@ import com.neuedu.model.Department;
 import com.neuedu.service.BalanceService;
 import com.neuedu.service.BfjlService;
 import com.neuedu.service.DepartmentService;
+import com.neuedu.tool.Pager;
 
 @Controller
 public class BfjlController {
@@ -50,7 +51,7 @@ public class BfjlController {
 	}
 	
 	@RequestMapping("/Bfjl/addbaofei")
-	public String addbaoxiu(HttpServletRequest request) {		
+	public String addbaofei(HttpServletRequest request) {		
 		List<Balance> listBalance = balanceService.selectAll();
 		List<Department> listDepartment = departmentService.selectAll();
 		request.setAttribute("listBalance", listBalance);
@@ -59,7 +60,7 @@ public class BfjlController {
 	}
 
 	@RequestMapping("/Bfjl/add")
-	public String addbaoxiu2(Integer SID, Double SCOUNT, String STIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
+	public String addbaofei2(Integer SID, Double SCOUNT, String STIME, Integer BID, Integer DEPARTID, HttpServletRequest request) {
 		Date date = null;
 		try{
 			date = new SimpleDateFormat("YYYY-MM-DD").parse(STIME);
@@ -70,6 +71,16 @@ public class BfjlController {
 		bfjlService.insert(record);
 		List<Bfjl> listBfjl = bfjlService.selectAll();
 		request.setAttribute("listBfjl", listBfjl);
+		return "baofeixinxi";
+	}
+	
+	@RequestMapping("/Bfjl/search")
+	public String searchbaofei(@RequestParam String word, HttpServletRequest request) {
+		int num = Integer.parseInt(word);
+		List<Bfjl> listBfjl = bfjlService.search(num);
+		request.setAttribute("listBfjl", listBfjl);
+		Pager page = new Pager(1,1);
+		request.setAttribute("page", page);
 		return "baofeixinxi";
 	}
 	
@@ -99,7 +110,7 @@ public class BfjlController {
 		Bfjl record = new Bfjl(SID, SCOUNT, date, BID, DEPARTID);
 		bfjlService.updateByPrimaryKey(record);
 		List<Bfjl> listBfjl = bfjlService.selectAll();
-		request.setAttribute("listBfjl", listBfjl);			
+		request.setAttribute("listBfjl", listBfjl);
 		return "baofeixinxi";
 	}
 	

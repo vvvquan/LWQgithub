@@ -35,4 +35,14 @@
     select REPAIRID, RCOUNT, RTIME, DEPARTID, BID
     from repair
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select REPAIRID, RCOUNT, RTIME, DEPARTID, BID
+    from repair
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
+  <select id="search" resultMap="BaseResultMap">
+    select REPAIRID, RCOUNT, RTIME, DEPARTID, BID
+    from repair
+    where REPAIRID=#{word, jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -21,6 +21,7 @@ import com.neuedu.model.Department;
 import com.neuedu.service.AreaService;
 import com.neuedu.service.BalanceService;
 import com.neuedu.service.TpjlService;
+import com.neuedu.tool.Pager;
 import com.neuedu.service.DepartmentService;
 
 @Controller
@@ -79,6 +80,16 @@ public class TpjlController {
 		tpjlService.insert(record);
 		List<Tpjl> listTpjl = tpjlService.selectAll();
 		request.setAttribute("listTpjl", listTpjl);
+		return "tiaopeixinxi";
+	}
+
+	@RequestMapping("/Tpjl/search")
+	public String searchTpjl(@RequestParam String word, HttpServletRequest request) {
+		int num = Integer.parseInt(word);
+		List<Tpjl> listTpjl = tpjlService.search(num);
+		request.setAttribute("listTpjl", listTpjl);
+		Pager page = new Pager(1,1);
+		request.setAttribute("page", page);
 		return "tiaopeixinxi";
 	}
 	

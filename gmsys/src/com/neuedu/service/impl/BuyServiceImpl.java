@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.neuedu.mapper.BuyMapper;
 import com.neuedu.model.Buy;
+import com.neuedu.model.Bxjl;
 import com.neuedu.service.BuyService;
 
 @Service     //注解service的实现类
@@ -45,6 +46,18 @@ public class BuyServiceImpl implements BuyService {
 	public int updateByPrimaryKey(Buy record) {
 		// TODO Auto-generated method stub
 		return mapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public List<Buy> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
+	@Override
+	public List<Buy> search(int num) {
+		// TODO Auto-generated method stub
+		return mapper.search(num);
 	}
 
 }

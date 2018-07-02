@@ -46,4 +46,16 @@ public class BxjlServiceImpl implements BxjlService {
 		return mapper.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public List<Bxjl> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
+	@Override
+	public List<Bxjl> search(int num) {
+		// TODO Auto-generated method stub
+		return mapper.search(num);
+	}
+
 }

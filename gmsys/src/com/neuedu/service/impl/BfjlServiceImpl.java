@@ -48,4 +48,16 @@ public class BfjlServiceImpl implements BfjlService {
 		return mapper.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public List<Bfjl> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
+	@Override
+	public List<Bfjl> search(int num) {
+		// TODO Auto-generated method stub
+		return mapper.search(num);
+	}
+
 }

@@ -45,26 +45,26 @@
                         </a>
     			<ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do" class="active">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do?pageNow=1" class="active">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -81,20 +81,20 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/balance/findAll.do">
+                                <a href="${pageContext.request.contextPath}/balance/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产总数</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
@@ -114,12 +114,12 @@
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/product/findAll.do">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

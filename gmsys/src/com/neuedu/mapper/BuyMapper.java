@@ -13,4 +13,8 @@ public interface BuyMapper {
     List<Buy> selectAll();
 
     int updateByPrimaryKey(Buy record);
+
+	List<Buy> select(int pagenow);
+
+	List<Buy> search(int num);
 }

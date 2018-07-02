@@ -35,4 +35,9 @@
     select PRODID, PRODNAME, PRODCOUNT, PROVID, BUYCOUNT
     from product
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select PRODID, PRODNAME, PRODCOUNT, PROVID, BUYCOUNT
+    from product
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
 </mapper>

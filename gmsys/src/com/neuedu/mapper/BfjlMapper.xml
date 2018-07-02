@@ -35,4 +35,14 @@
     select SID, SCOUNT, STIME, BID, DEPARTID
     from scrap
   </select>
+  <select id="select" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select SID, SCOUNT, STIME, BID, DEPARTID
+    from scrap
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
+  <select id="search" resultMap="BaseResultMap">
+    select SID, SCOUNT, STIME, BID, DEPARTID
+    from scrap
+    where SID=#{num,jdbcType=INTEGER}
+  </select>
 </mapper>

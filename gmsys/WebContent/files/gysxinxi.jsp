@@ -3,7 +3,7 @@
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="b"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -279,19 +279,19 @@ function link(){
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>
@@ -307,24 +307,24 @@ function link(){
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/balance/findAll.do">
+                                <a href="${pageContext.request.contextPath}/balance/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产总数</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/cgjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/cgjl/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/bfjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -340,12 +340,12 @@ function link(){
                         </a>
                         <ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
-                                <a href="${pageContext.request.contextPath}/provider/findAll.do" class="active">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=1" class="active">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/product/findAll.do">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -395,10 +395,10 @@ function link(){
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
-				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
+              <!-- 	           <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
 						           <input name="Submit" type="button" class="right-button08" value="删除所选供应商信息" /> <input name="Submit" type="button" class="right-button08" value="添加供应商信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					              </td>
+					           </td> -->
 				          </tr>
 				              <tr>
 				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
@@ -448,8 +448,18 @@ function link(){
 				        <tr>
 				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
 				              <tr>
-				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
-				                <td width="49%" align="right">[<a href="#" class="right-font08">首页</a> | <a href="#" class="right-font08">上一页</a> | <a href="#" class="right-font08">下一页</a> | <a href="#" class="right-font08">末页</a>] 转至：</td>
+				                <c:set var="page" value="${page}"></c:set>
+				                <td width="50%">共 <span class="right-text09"><c:out value="${page.totalPage}"/></span> 页 | 第 <span class="right-text09"><c:out value="${page.pageNow}"/></span> 页</td>
+				                <td width="49%" align="right">
+				                	[<a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=1" class="right-font08">首页</a> | 
+				                	<c:if test="${page.hasPre}">
+				                	<a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=<c:out value="${page.pageNow-1}"/>" class="right-font08">上一页</a> | 
+				                	</c:if>
+				                	<c:if test="${page.hasNext}">
+				                	<a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=<c:out value="${page.pageNow+1}"/>" class="right-font08">下一页</a> | 
+				                	</c:if>
+				                	<a href="${pageContext.request.contextPath}/provider/findAll.do?pageNow=<c:out value="${page.totalPage}"/>" class="right-font08">末页</a>] 转至：
+				                </td>
 				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
 				                    <tr>
 				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>

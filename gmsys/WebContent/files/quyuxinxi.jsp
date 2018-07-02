@@ -136,7 +136,7 @@ function link(){
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/area/list.do">
+                                <a href="${pageContext.request.contextPath}/area/list.do" class="active">
                                      <i class="am-icon-angle-right"></i>
                                      <span>区域管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
@@ -152,26 +152,26 @@ function link(){
                         </a>
     			<ul class="tpl-left-nav-sub-menu" style="display:block">
                             <li>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/Tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/Bxjl/findAll.do" class="active">
+                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/Bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-success"></i>

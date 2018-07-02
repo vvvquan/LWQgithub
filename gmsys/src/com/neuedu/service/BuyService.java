@@ -3,6 +3,7 @@ package com.neuedu.service;
 import java.util.List;
 
 import com.neuedu.model.Buy;
+import com.neuedu.model.Bxjl;
 
 public interface BuyService {
     int deleteByPrimaryKey(Integer buyid);
@@ -14,4 +15,8 @@ public interface BuyService {
     List<Buy> selectAll();
 
     int updateByPrimaryKey(Buy record);
+
+	List<Buy> select(int pagenow);
+
+	List<Buy> search(int num);
 }

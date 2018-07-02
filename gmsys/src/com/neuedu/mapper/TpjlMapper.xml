@@ -39,4 +39,14 @@
     select TID, TCOUNT, TRTIME, BID, DEPARTID, AREAID
     from translate
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID, AREAID
+    from translate
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
+  <select id="search" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID, AREAID
+    from translate
+    where TID=#{word, jdbcType=INTEGER}
+  </select>
 </mapper>

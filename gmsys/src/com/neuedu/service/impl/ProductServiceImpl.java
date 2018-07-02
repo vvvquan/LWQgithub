@@ -48,4 +48,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public List<Product> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
 }

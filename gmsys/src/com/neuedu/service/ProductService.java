@@ -12,6 +12,8 @@ public interface ProductService {
     Product selectByPrimaryKey(Integer prodid);
 
     List<Product> selectAll();
+    
+    List<Product> select(int pageNow);
 
     int updateByPrimaryKey(Product record);
 }

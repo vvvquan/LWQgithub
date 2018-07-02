@@ -41,4 +41,9 @@
     select BID, BNAME, BCOUNT, PRICE, BDATE, CID, DEPARTID
     from balance
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select BID, BNAME, BCOUNT, PRICE, BDATE, CID, DEPARTID
+    from balance
+    limit #{pagenow,jdbcType=INTEGER},5
+  </select>
 </mapper>

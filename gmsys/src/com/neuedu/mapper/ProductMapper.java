@@ -12,5 +12,7 @@ public interface ProductMapper {
 
     List<Product> selectAll();
 
+    List<Product> select(int pagenow);
+    
     int updateByPrimaryKey(Product record);
 }

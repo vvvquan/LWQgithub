@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.neuedu.model.Bfjl;
 import com.neuedu.model.Buy;
+import com.neuedu.model.Bxjl;
 import com.neuedu.model.Department;
 import com.neuedu.model.Product;
 import com.neuedu.model.Provider;
@@ -20,6 +22,7 @@ import com.neuedu.service.BuyService;
 import com.neuedu.service.DepartmentService;
 import com.neuedu.service.ProductService;
 import com.neuedu.service.ProviderService;
+import com.neuedu.tool.Pager;
 
 @Controller
 @RequestMapping("/buy")
@@ -34,9 +37,13 @@ public class BuyController {
 	private DepartmentService departmentService;
 	
 	@RequestMapping("/findAll")
-	public String ProductList(HttpServletRequest request) {		
-		List<Buy> listBuy = buyService.selectAll();
-		request.setAttribute("listBuy", listBuy);			
+	public String ProductList(@RequestParam String pageNow, HttpServletRequest request) {		
+		int pagenow = Integer.parseInt(pageNow);
+		List<Buy> listBuy = buyService.select(pagenow);
+		List<Buy> listall = buyService.selectAll();
+		request.setAttribute("listBuy", listBuy);
+		Pager page = new Pager(pagenow, listall.size());
+		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
 	
@@ -83,6 +90,16 @@ public class BuyController {
 		buyService.insert(record);
 		List<Buy> listBuy = buyService.selectAll();
 		request.setAttribute("listBuy", listBuy);
+		return "caigouxinxi";
+	}
+	
+	@RequestMapping("/search")
+	public String searchcaigou(@RequestParam String word, HttpServletRequest request) {
+		int num = Integer.parseInt(word);
+		List<Buy> listBuy = buyService.search(num);
+		request.setAttribute("listBuy", listBuy);
+		Pager page = new Pager(1,1);
+		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
 	

@@ -47,4 +47,10 @@ public class ProviderServiceImpl implements ProviderService {
 		return mapper.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public List<Provider> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
 }

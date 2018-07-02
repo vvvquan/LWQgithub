@@ -10,7 +10,11 @@ public interface BfjlMapper {
 
     Bfjl selectByPrimaryKey(Integer sid);
 
+    List<Bfjl> select(int pagenow);
+    
     List<Bfjl> selectAll();
 
     int updateByPrimaryKey(Bfjl record);
+
+	List<Bfjl> search(int num);
 }

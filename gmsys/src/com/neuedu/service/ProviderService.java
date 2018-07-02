@@ -12,6 +12,8 @@ public interface ProviderService {
     Provider selectByPrimaryKey(Integer provid);
 
     List<Provider> selectAll();
+    
+    List<Provider> select(int pagenow);
 
     int updateByPrimaryKey(Provider record);
 }

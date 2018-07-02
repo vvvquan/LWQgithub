@@ -2,14 +2,18 @@ package com.neuedu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.neuedu.service.ProviderService;
+import com.neuedu.tool.Pager;
+import com.neuedu.model.Buy;
 import com.neuedu.model.Provider;
 
 @Controller
@@ -19,12 +23,16 @@ public class ProviderController {
 	ProviderService providerService;
 	
 	@RequestMapping("/provider/findAll")
-	public String findAll(Model model){
-		List<Provider> list = providerService.selectAll();
+	public String findAll(Model model, @RequestParam String pageNow, HttpServletRequest request){
+		int pagenow = Integer.parseInt(pageNow);
+		List<Provider> list = providerService.select(pagenow);
 		if(list == null){
 			return "index";
 		}else{
 			model.addAttribute("listProvider", list);
+			List<Provider> listall = providerService.selectAll();
+			Pager page = new Pager(pagenow, listall.size());
+			request.setAttribute("page", page);
 			return "gysxinxi";
 		}
 	}

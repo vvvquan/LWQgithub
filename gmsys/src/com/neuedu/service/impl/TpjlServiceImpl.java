@@ -48,4 +48,16 @@ public class TpjlServiceImpl implements TpjlService {
 		return mapper.updateByPrimaryKey(record);
 	}
 
+	@Override
+	public List<Tpjl> select(int pagenow) {
+		// TODO Auto-generated method stub
+		return mapper.select((pagenow-1)*5);
+	}
+
+	@Override
+	public List<Tpjl> search(int num) {
+		// TODO Auto-generated method stub
+		return mapper.search(num);
+	}
+
 }

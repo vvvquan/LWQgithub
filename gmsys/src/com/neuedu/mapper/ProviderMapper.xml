@@ -33,4 +33,9 @@
     select PROVID, PROVNAME, ADDRESS, PHONE
     from provider
   </select>
+  <select id="select" resultMap="BaseResultMap">
+    select PROVID, PROVNAME, ADDRESS, PHONE
+    from provider
+    limit #{pagenow, jdbcType=INTEGER}, 5
+  </select>
 </mapper>
