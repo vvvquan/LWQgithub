@@ -91,14 +91,26 @@ $(function(){
             return $(elem).val();
         }).get().join('-');
     	//alert("选中的checkbox的值为："+bqstring);
-    	$("#fom").attr("action","${pageContext.request.contextPath}/buy/delete.do?number="+bqstring);
-    	$("#fom").submit();
+    	if(bqstring != ""){
+    		$("#fom").attr("action","${pageContext.request.contextPath}/buy/delete.do?number="+bqstring);
+    		$("#fom").submit();
+    	}
     });
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/buy/search.do?word="+bq);
-        $("#fom").submit();
+        if(bq != ""){
+        	$("#fom").attr("action","${pageContext.request.contextPath}/buy/search.do?word="+bq);
+        	$("#fom").submit();
+        }
+    });
+	$("#skip").click(function() {
+		var bq= $("#skippage").val();
+        //alert("跳转的页面为："+bq);
+        if(bq != ""){
+        	$("#fom").attr("action","${pageContext.request.contextPath}/buy/findAll.do?pageNow="+bq);
+        	$("#fom").submit();
+        }
     });
 });
 </SCRIPT>
@@ -201,8 +213,8 @@ $(function(){
 				                </td>
 				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
 				                    <tr>
-				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
+				                      <td width="1%"><input id="skippage" name="textfield3" type="text" class="right-textfield03" size="2" /></td>
+				                      <td width="87%"><input id="skip" name="Submit23222" type="submit" class="right-button06" value=" " />
 				                      </td>
 				                    </tr>
 				                </table></td>

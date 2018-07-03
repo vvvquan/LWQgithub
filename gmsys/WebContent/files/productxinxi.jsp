@@ -274,7 +274,7 @@ function link(){
                         </a>
     			<ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

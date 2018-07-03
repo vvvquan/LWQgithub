@@ -49,7 +49,10 @@ public class BuyProductController {
 	
 	@RequestMapping("/buyProuduct/findAll2")
 	public String doLogin5(@RequestParam String pageNow, HttpServletRequest request) {
-		int pagenow = Integer.parseInt(pageNow);
+		int pagenow = 1;
+		if(pageNow != null && !pageNow.equals("")){
+			pagenow = Integer.parseInt(pageNow);
+		}
 		List<Tpjl> list2 = tpjlService.select(pagenow);
 		List<Tpjl> listall = tpjlService.selectAll();
 		request.setAttribute("listTpjl", list2);
@@ -60,7 +63,10 @@ public class BuyProductController {
 	
 	@RequestMapping("/buyProuduct/findAll3")
 	public String doLogin3(@RequestParam String pageNow, HttpServletRequest request) {
-		int pagenow = Integer.parseInt(pageNow);
+		int pagenow = 1;
+		if(pageNow != null && !pageNow.equals("")){
+			pagenow = Integer.parseInt(pageNow);
+		}
 		List<Bxjl> list3 = bxjlService.select(pagenow);
 		List<Bxjl> listall = bxjlService.selectAll();
 		request.setAttribute("listBxjl", list3);	
@@ -71,7 +77,10 @@ public class BuyProductController {
 	
 	@RequestMapping("/buyProuduct/findAll4")
 	public String doLogin4(@RequestParam String pageNow, HttpServletRequest request) {
-		int pagenow = Integer.parseInt(pageNow);
+		int pagenow = 1;
+		if(pageNow != null && !pageNow.equals("")){
+			pagenow = Integer.parseInt(pageNow);
+		}
 		List<Bfjl> list4 = bfjlService.select(pagenow);
 		List<Bfjl> listall = bfjlService.selectAll();
 		request.setAttribute("listBfjl", list4);

@@ -316,7 +316,7 @@ document.getElementById("aa").style.display="";
 
 
 
-<%--内容 --%>
+		<%--内容 --%>
         <div class="tpl-content-wrapper">
             <form action="${pageContext.request.contextPath}/provider/add.do" method="post"  name="form" >
 				<div class="MainDiv">
@@ -345,11 +345,9 @@ document.getElementById("aa").style.display="";
 								        <span class="red">*</span></td>-->
 									    <td nowrap align="right" width="15%">供应商名称:</td>
 									    <td width="35%"><input name='provname' type="text" class="text" style="width:154px" value="" />
-								       
-									   
+								       									   
 									  </tr> 
-									    
-									    
+									    									    
 									  <tr>
 									   <!--<td nowrap align="right" width="15%">供应商名称:</td>
 									    <td width="35%"><input name='provname' type="text" class="text" style="width:154px" value="" />
@@ -363,46 +361,24 @@ document.getElementById("aa").style.display="";
 									  
 									  </table>
 							  <br />
-								</fieldset>			</TD>
-							
-						</TR>
-						
-				
-						
-						
-						
-						</TABLE>
-					
-					
+								</fieldset>			</TD>							
+						</TR>						
+						</TABLE>					
 					 </td>
-				  </tr>
-				  
-				  
-						
-						
-						
+				  </tr>						
 						<TR>
 							<TD colspan="2" align="center" height="50px">
 							<input type="submit" name="Submit" value="保存" class="button" onclick="alert('保存成功！');"/>　
 							
 							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/></TD>
 						</TR>
-						</TABLE>
-					
-					
+						</TABLE>									
 					 </td>
-				  </tr>
-				  
-				  
-				  
+				  </tr>				  
 				  </table>
 				
 				</div>
 				</form>
-            
-
-
-
         </div>
 
 

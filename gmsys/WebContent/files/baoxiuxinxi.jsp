@@ -101,14 +101,18 @@ $(function(){
             return $(elem).val();
         }).get().join('-');
     	//alert("选中的checkbox的值为："+bqstring);
-    	$("#fom").attr("action","${pageContext.request.contextPath}/Bxjl/delete.do?number="+bqstring);
-    	$("#fom").submit();
+    	if(bqstring != ""){
+    		$("#fom").attr("action","${pageContext.request.contextPath}/Bxjl/delete.do?number="+bqstring);
+    		$("#fom").submit();
+    	}
     });
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/Bxjl/search.do?word="+bq);
-        $("#fom").submit();
+        if(bq != ""){
+        	$("#fom").attr("action","${pageContext.request.contextPath}/Bxjl/search.do?word="+bq);
+        	$("#fom").submit();
+        }
     });
 });
 </SCRIPT>

@@ -38,7 +38,10 @@ public class BuyController {
 	
 	@RequestMapping("/findAll")
 	public String ProductList(@RequestParam String pageNow, HttpServletRequest request) {		
-		int pagenow = Integer.parseInt(pageNow);
+		int pagenow = 1;
+		if(pageNow != null && !pageNow.equals("")){
+			pagenow = Integer.parseInt(pageNow);
+		}
 		List<Buy> listBuy = buyService.select(pagenow);
 		List<Buy> listall = buyService.selectAll();
 		request.setAttribute("listBuy", listBuy);
@@ -90,6 +93,8 @@ public class BuyController {
 		buyService.insert(record);
 		List<Buy> listBuy = buyService.selectAll();
 		request.setAttribute("listBuy", listBuy);
+		Pager page = new Pager(1, listBuy.size());
+		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
 	
@@ -98,7 +103,7 @@ public class BuyController {
 		int num = Integer.parseInt(word);
 		List<Buy> listBuy = buyService.search(num);
 		request.setAttribute("listBuy", listBuy);
-		Pager page = new Pager(1,1);
+		Pager page = new Pager(1, listBuy.size());
 		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
@@ -113,7 +118,9 @@ public class BuyController {
 			}
 		}
 		List<Buy> listBuy = buyService.selectAll();
-		request.setAttribute("listBuy", listBuy);			
+		request.setAttribute("listBuy", listBuy);
+		Pager page = new Pager(1, listBuy.size());
+		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
 	
@@ -129,7 +136,9 @@ public class BuyController {
 		Buy record = new Buy(BUYID, BUYCOUNT, date, PROVID, PRODID, DEPARTID);
 		buyService.updateByPrimaryKey(record);
 		List<Buy> listBuy = buyService.selectAll();
-		request.setAttribute("listBuy", listBuy);			
+		request.setAttribute("listBuy", listBuy);
+		Pager page = new Pager(1, listBuy.size());
+		request.setAttribute("page", page);
 		return "caigouxinxi";
 	}
 }

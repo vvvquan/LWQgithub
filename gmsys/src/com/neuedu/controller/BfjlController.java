@@ -71,6 +71,8 @@ public class BfjlController {
 		bfjlService.insert(record);
 		List<Bfjl> listBfjl = bfjlService.selectAll();
 		request.setAttribute("listBfjl", listBfjl);
+		Pager page = new Pager(1, listBfjl.size());
+		request.setAttribute("page", page);
 		return "baofeixinxi";
 	}
 	
@@ -79,7 +81,7 @@ public class BfjlController {
 		int num = Integer.parseInt(word);
 		List<Bfjl> listBfjl = bfjlService.search(num);
 		request.setAttribute("listBfjl", listBfjl);
-		Pager page = new Pager(1,1);
+		Pager page = new Pager(1, listBfjl.size());
 		request.setAttribute("page", page);
 		return "baofeixinxi";
 	}
@@ -94,7 +96,9 @@ public class BfjlController {
 			}
 		}
 		List<Bfjl> listBfjl = bfjlService.selectAll();
-		request.setAttribute("listBfjl", listBfjl);			
+		request.setAttribute("listBfjl", listBfjl);	
+		Pager page = new Pager(1, listBfjl.size());
+		request.setAttribute("page", page);
 		return "baofeixinxi";
 	}
 	
@@ -111,6 +115,8 @@ public class BfjlController {
 		bfjlService.updateByPrimaryKey(record);
 		List<Bfjl> listBfjl = bfjlService.selectAll();
 		request.setAttribute("listBfjl", listBfjl);
+		Pager page = new Pager(1, listBfjl.size());
+		request.setAttribute("page", page);
 		return "baofeixinxi";
 	}
 	

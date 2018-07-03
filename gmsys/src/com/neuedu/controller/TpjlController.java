@@ -80,6 +80,8 @@ public class TpjlController {
 		tpjlService.insert(record);
 		List<Tpjl> listTpjl = tpjlService.selectAll();
 		request.setAttribute("listTpjl", listTpjl);
+		Pager page = new Pager(1, listTpjl.size());
+		request.setAttribute("page", page);
 		return "tiaopeixinxi";
 	}
 
@@ -88,7 +90,7 @@ public class TpjlController {
 		int num = Integer.parseInt(word);
 		List<Tpjl> listTpjl = tpjlService.search(num);
 		request.setAttribute("listTpjl", listTpjl);
-		Pager page = new Pager(1,1);
+		Pager page = new Pager(1, listTpjl.size());
 		request.setAttribute("page", page);
 		return "tiaopeixinxi";
 	}
@@ -103,7 +105,9 @@ public class TpjlController {
 			}
 		}
 		List<Tpjl> listTpjl = tpjlService.selectAll();
-		request.setAttribute("listTpjl", listTpjl);			
+		request.setAttribute("listTpjl", listTpjl);		
+		Pager page = new Pager(1, listTpjl.size());
+		request.setAttribute("page", page);
 		return "tiaopeixinxi";
 	}
 	
@@ -119,7 +123,9 @@ public class TpjlController {
 		Tpjl record = new Tpjl(TID, TCOUNT, date, BID, DEPARTID, AREAID);
 		tpjlService.updateByPrimaryKey(record);
 		List<Tpjl> listTpjl = tpjlService.selectAll();
-		request.setAttribute("listTpjl", listTpjl);			
+		request.setAttribute("listTpjl", listTpjl);	
+		Pager page = new Pager(1, listTpjl.size());
+		request.setAttribute("page", page);
 		return "tiaopeixinxi";
 	}
 	

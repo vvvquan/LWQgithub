@@ -78,6 +78,8 @@ public class BxjlController {
 		bxjlService.insert(record);
 		List<Bxjl> listBxjl = bxjlService.selectAll();
 		request.setAttribute("listBxjl", listBxjl);
+		Pager page = new Pager(1, listBxjl.size());
+		request.setAttribute("page", page);
 		return "baoxiuxinxi";
 	}
 	
@@ -86,7 +88,7 @@ public class BxjlController {
 		int num = Integer.parseInt(word);
 		List<Bxjl> listBxjl = bxjlService.search(num);
 		request.setAttribute("listBxjl", listBxjl);
-		Pager page = new Pager(1,1);
+		Pager page = new Pager(1, listBxjl.size());
 		request.setAttribute("page", page);
 		return "baoxiuxinxi";
 	}
@@ -102,6 +104,8 @@ public class BxjlController {
 		}
 		List<Bxjl> listBxjl = bxjlService.selectAll();
 		request.setAttribute("listBxjl", listBxjl);			
+		Pager page = new Pager(1, listBxjl.size());
+		request.setAttribute("page", page);
 		return "baoxiuxinxi";
 	}
 	
@@ -117,7 +121,9 @@ public class BxjlController {
 		Bxjl record = new Bxjl(REPAIRID, RCOUNT, date, BID, DEPARTID);
 		bxjlService.updateByPrimaryKey(record);
 		List<Bxjl> listBxjl = bxjlService.selectAll();
-		request.setAttribute("listBxjl", listBxjl);			
+		request.setAttribute("listBxjl", listBxjl);
+		Pager page = new Pager(1, listBxjl.size());
+		request.setAttribute("page", page);
 		return "baoxiuxinxi";
 	}
 	

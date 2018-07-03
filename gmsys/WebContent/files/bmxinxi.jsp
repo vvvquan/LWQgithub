@@ -400,11 +400,11 @@ function del(){
 						   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
-							  <td width="519"><label>部门编号:
+							  <!-- <td width="519"><label>部门编号:
 							      <input name="text" type="text" nam="gongs" />
 							  </label>
 							    </input>
-							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td>
+							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td> -->
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -456,7 +456,7 @@ function del(){
 				        <tr>
 				          <td height="6"><img src="../images/spacer.gif" width="1" height="1" /></td>
 				        </tr>
-				        <tr>
+				        <!-- <tr>
 				          <td height="33"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="right-font08">
 				              <tr>
 				                <td width="50%">共 <span class="right-text09">5</span> 页 | 第 <span class="right-text09">1</span> 页</td>
@@ -468,7 +468,7 @@ function del(){
 				                      </td>
 				                    </tr>
 				                </table></td>
-				              </tr>
+				              </tr> -->
 				          </table></td>
 				        </tr>
 				      </table></td>

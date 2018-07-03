@@ -98,7 +98,7 @@
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/bfjl/findAll.do?pageNow=1">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>

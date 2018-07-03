@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/amazeui.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/echarts.min.js"></script>
     <style type="text/css">
 <!--
@@ -92,9 +93,41 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="../files/addgys.jsp";
+   document.getElementById("fom").action="../files/addgys.jsp";
    document.getElementById("fom").submit();
 }
+
+var bqstring="";
+$(function(){
+	$("#test").click(function() {
+		bqstring = $("input:checkbox[name='delid']:checked").map(function(index,elem) {
+            return $(elem).val();
+        }).get().join('-');
+    	//alert("选中的checkbox的值为："+bqstring);
+    	if(bqstring != ""){
+    		$("#fom").attr("action","${pageContext.request.contextPath}/provider/delete.do?number="+bqstring);
+    		$("#fom").submit();
+    	}
+    });
+	$("#chaxun").click(function() {
+		var bq= $("#text").val();
+        //alert("搜索的值为："+bq);
+        if(bq != ""){
+        	$("#fom").attr("action","${pageContext.request.contextPath}/provider/search.do?word="+bq);
+        	$("#fom").submit();
+        }
+    });
+	$("#skip").click(function() {
+		var bq= $("#skippage").val();
+        //alert("跳转的页码为："+bq);
+        if(bq != ""){
+        	$("#fom").attr("action","${pageContext.request.contextPath}/provider/findAll.do?pageNow="+bq);
+        	$("#fom").submit();
+        }
+    });
+});
+
+
 
 </SCRIPT>
 <body data-type="index">
@@ -274,7 +307,7 @@ function link(){
                         </a>
     			<ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/buy/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll.do?pageNow=1">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -367,7 +400,7 @@ function link(){
 
 
 
-<%--内容 --%>
+		<%--内容 --%>
         <div class="tpl-content-wrapper">
             <form name="fom" id="fom" method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -380,11 +413,10 @@ function link(){
 						   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
-							  <td width="519"><label>供应商编号:
+							  <!-- <td width="519"><label>供应商编号:
 							      <input name="text" type="text" nam="gongs" />
 							  </label>
-							    </input>
-							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td>
+							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td> -->
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -395,10 +427,11 @@ function link(){
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
-              <!-- 	           <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选供应商信息" /> <input name="Submit" type="button" class="right-button08" value="添加供应商信息" onclick="link();" />
+              	           <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
+						           <input id="test" name="Submit" type="button" class="right-button08" value="删除所选供应商信息" /> 
+						           <input name="Submit" type="button" class="right-button08" value="添加供应商信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					           </td> -->
+					           </td>
 				          </tr>
 				              <tr>
 				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
@@ -425,12 +458,12 @@ function link(){
 				              		Provider b=it.next();
 				              	%>
 				                  <tr>
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="<%=b.getProvid() %>"/></td>
 				                     <td bgcolor="#FFFFFF"><%=b.getProvid() %></td>
 				                    <td height="20" bgcolor="#FFFFFF"><%=b.getProvname() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getPhone() %></td>
 				                    <td height="20" bgcolor="#FFFFFF"><%=b.getAddress() %></td>
-				                    <td bgcolor="#FFFFFF">2008-08-30</td>
+				                    <td bgcolor="#FFFFFF">2018-7-3</td>
 				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/provider/find2.do?id=<%=b.getProvid() %>">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/provider/find.do?id=<%=b.getProvid() %>">查看</a></td>
 				                  </tr>
 				                  
@@ -462,8 +495,8 @@ function link(){
 				                </td>
 				                <td width="1%"><table width="20" border="0" cellspacing="0" cellpadding="0">
 				                    <tr>
-				                      <td width="1%"><input name="textfield3" type="text" class="right-textfield03" size="1" /></td>
-				                      <td width="87%"><input name="Submit23222" type="submit" class="right-button06" value=" " />
+				                      <td width="1%"><input id="skippage" name="textfield3" type="text" class="right-textfield03" size="2" /></td>
+				                      <td width="87%"><input id="skip" name="Submit23222" type="button" class="right-button06" value=" " />
 				                      </td>
 				                    </tr>
 				                </table></td>
@@ -475,13 +508,8 @@ function link(){
 				</table>
 				</form>
             
-
-
-
         </div>
-
-
-    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+        
     <script src="${pageContext.request.contextPath}/assets/js/amazeui.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/iscroll.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/app.js"></script>
